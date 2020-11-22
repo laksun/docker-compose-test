@@ -4,10 +4,10 @@ services:
   #Nginx Service
   api:
     # It will look for a dockerfile in the project root and build it
-    image: bayesimpact/react-base
+    image: rapidoid
     # Exposes the port 5000 from a container and binds it to a random port
     ports:
-      - "8080"
+      - "8888"
     # If the container goes down, it will restart
     restart: "always"
     # Connects the API to a common api.network bridge
@@ -16,6 +16,8 @@ services:
     # Starts up 5 replicas of the same image
     deploy:
       replicas: 2
+    volumes:
+      - "./:/app"
     # nginx container
   nginx:
     # specifies the latest nginx image
